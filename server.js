@@ -1,7 +1,7 @@
 //Import du module HTTP puis du contenu du fichier app.js
 const http = require("http");
 const app = require("./app");
-//Configuration du port sur lequel l'application va émettre
+
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
 
