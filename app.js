@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 const stuffRoutes = require("./routes/stuff");
+const userRoutes = require("./controllers/user");
 //Mongoose connect
 
 mongoose
@@ -29,8 +30,9 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, DELETE, PATCH, OPTIONS"
   );
-  next()
+  next();
 });
 
 app.use("/api/stuff", stuffRoutes);
+app.use("/api/auth", userRoutes);
 module.exports = app;
