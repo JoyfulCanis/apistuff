@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
+const path = require('path');
 
 const stuffRoutes = require("./routes/stuff");
 const userRoutes = require("./controllers/user");
@@ -19,6 +20,7 @@ mongoose
 //Interception toutes les requettes contenant du JSON en le déployant dans le body de la req
 app.use(express.json());
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 //Middleware permettant d'éviter les conflits CORS
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -34,5 +36,5 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/stuff", stuffRoutes);
-app.use("/api/auth", userRoutes);
+// app.use("/api/auth", userRoutes);
 module.exports = app;
